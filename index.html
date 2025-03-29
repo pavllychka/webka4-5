@@ -22,6 +22,33 @@
         </nav>
     </header>
 
+    <!-- Основна частина -->
+    <main>
+        <aside class="filters">
+            <h2>Фільтри</h2>
+            <div class="filter-category">
+                <label for="category">Категорія:</label>
+                <select id="category">
+                    <option value="all">Усі</option>
+                    <option value="women">Жіночі</option>
+                    <option value="men">Чоловічі</option>
+                    <option value="unisex">Унісекс</option>
+                </select>
+            </div>
+            <div class="filter-price">
+                <label>Ціна:</label>
+                <input type="number" id="min-price" placeholder="Мін">
+                <input type="number" id="max-price" placeholder="Макс">
+            </div>
+            <button id="apply-filters">Застосувати</button>
+        </aside>
+
+        <section class="products">
+            <h1>Наші парфуми</h1>
+            <div id="product-grid" class="product-grid"></div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
