@@ -1,3 +1,4 @@
+// Завантаження товарів з JSON
 async function loadProducts() {
     try {
         const response = await fetch('products.json');
@@ -9,6 +10,7 @@ async function loadProducts() {
     }
 }
 
+// Відображення товарів
 function displayProducts(products) {
     const productGrid = document.getElementById('product-grid');
     productGrid.innerHTML = '';
@@ -28,11 +30,13 @@ function displayProducts(products) {
             <p class="price">${product.price} грн</p>
             <button class="add-to-cart" data-id="${product.id}">Додати в кошик</button>
         `;
+        card.addEventListener('click', () => showModal(product));
         productGrid.appendChild(card);
     });
 
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', (e) => {
+            e.stopPropagation();
             const productId = parseInt(e.target.dataset.id);
             const product = products.find(p => p.id === productId);
             cart.push(product);
@@ -41,6 +45,35 @@ function displayProducts(products) {
     });
 }
 
+// Фільтрація товарів
+function filterProducts(products) {
+    const category = document.getElementById('category').value;
+    const minPrice = parseInt(document.getElementById('min-price').value) || 0;
+    const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
+
+    return products.filter(product => {
+        const matchesCategory = category === 'all' || product.category === category;
+        const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
+        return matchesCategory && matchesPrice;
+    });
+}
+
+// Ініціалізація кошика
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Оновлення кількості в кошику
+function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    cartCount.textContent = cart.length;
+}
+
+// Збереження кошика
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+// Показ модального вікна
 function showModal(product) {
     const modal = document.getElementById('product-modal');
     document.getElementById('modal-image').src = product.image;
@@ -61,31 +94,7 @@ function showModal(product) {
     });
 }
 
-function filterProducts(products) {
-    const category = document.getElementById('category').value;
-    const minPrice = parseInt(document.getElementById('min-price').value) || 0;
-    const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
-
-    return products.filter(product => {
-        const matchesCategory = category === 'all' || product.category === category;
-        const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
-        return matchesCategory && matchesPrice;
-    });
-}
-
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function updateCartCount() {
-    const cartCount = document.getElementById('cart-count');
-    cartCount.textContent = cart.length;
-}
-
-function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-}
-
-
+// Ініціалізація
 async function init() {
     const products = await loadProducts();
     displayProducts(products);
