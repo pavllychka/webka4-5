@@ -60,3 +60,28 @@ async function init() {
 }
 
 init();
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    cartCount.textContent = cart.length;
+}
+
+function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+async function init() {
+    const products = await loadProducts();
+    displayProducts(products);
+    updateCartCount(); 
+
+    document.getElementById('apply-filters').addEventListener('click', () => {
+        const filteredProducts = filterProducts(products);
+        displayProducts(filteredProducts);
+    });
+}
+
+init();
