@@ -1,4 +1,4 @@
-
+/* Скидання стилів */
 * {
     margin: 0;
     padding: 0;
@@ -6,19 +6,19 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    background-color: #f8f9fa; 
+    background-color: #f8f9fa;
     color: #333;
 }
 
-
+/* Шапка */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background: linear-gradient(135deg, #ced1d5, #4b5563); 
+    background: linear-gradient(135deg, #a3bffa, #e2e8f0);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -26,11 +26,9 @@ header {
 }
 
 .logo img {
-    width: 50 px; 
+    width: 120px;
     animation: fadeIn 1s ease-in;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-    display: block;
-    margin: 0 auto;
 }
 
 .menu {
@@ -39,24 +37,48 @@ header {
 }
 
 .menu li {
-    margin-right: 30px;
+    margin-right: 15px;
 }
 
 .menu a {
     text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    padding: 8px 16px;
+    color: #64748b;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 8px 12px;
     transition: all 0.3s ease;
     border-radius: 20px;
 }
 
 .menu a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    color: #ffd700; 
+    color: #3b82f6;
 }
 
+.cart-icon {
+    display: flex;
+    align-items: center;
+    color: #64748b;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
+.cart-icon:hover {
+    transform: scale(1.1);
+}
+
+#cart-count {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    animation: pulse 0.5s ease;
+}
+
+/* Основна частина */
 main {
     display: flex;
     padding: 40px;
@@ -100,7 +122,7 @@ select:focus, input:focus {
 #apply-filters {
     padding: 12px;
     width: 100%;
-    background: linear-gradient(135deg, #ff6b6b, #ff8e53); 
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
     color: white;
     border: none;
     border-radius: 8px;
@@ -122,7 +144,7 @@ select:focus, input:focus {
 .products h1 {
     font-size: 2rem;
     margin-bottom: 30px;
-    color: #4b556366;
+    color: #4b5563;
     text-align: center;
 }
 
@@ -150,7 +172,7 @@ select:focus, input:focus {
 .product-card img {
     max-width: 100%;
     height: 200px;
-    object-fit: cover; 
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
 }
@@ -173,7 +195,7 @@ select:focus, input:focus {
     margin: 10px 0;
 }
 
-.add-to-cart {
+.add-to-cart, .add-to-cart-modal {
     padding: 12px 20px;
     background: linear-gradient(135deg, #4682b4, #60a5fa);
     color: white;
@@ -184,54 +206,12 @@ select:focus, input:focus {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.add-to-cart:hover {
+.add-to-cart:hover, .add-to-cart-modal:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(70, 130, 180, 0.4);
 }
 
-
-footer {
-    padding: 40px;
-    background: linear-gradient(135deg, #374151, #1f2937);
-    color: #fff;
-    text-align: center;
-    margin-top: 40px;
-}
-
-.contact-info p {
-    margin: 5px 0;
-    font-size: 1rem;
-}
-
-.social-links a {
-    color: #ffd700;
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: #fff;
-}
-
-.cart-icon {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-#cart-count {
-    background-color: #ff6b6b;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 50%;
-    margin-left: 10px;
-    font-size: 0.9rem;
-}
-
+/* Модальні вікна */
 .modal {
     display: none;
     position: fixed;
@@ -243,6 +223,7 @@ footer {
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    animation: modalFadeIn 0.3s ease-in;
 }
 
 .modal-content {
@@ -273,40 +254,81 @@ footer {
     margin-bottom: 20px;
 }
 
-.add-to-cart-modal {
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #4682b4, #60a5fa);
+/* Стилі для кошика */
+#cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-item h4 {
+    font-size: 1rem;
+    color: #374151;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.cart-item .price {
+    font-size: 1rem;
+    margin: 0 10px;
+}
+
+.cart-item button {
+    padding: 5px 10px;
+    background-color: #ff6b6b;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
 
-.add-to-cart-modal:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(70, 130, 180, 0.4);
+.cart-item button:hover {
+    background-color: #ef4444;
 }
 
-
-.cart-icon {
-    transition: transform 0.3s ease;
+/* Футер */
+footer {
+    padding: 40px;
+    background: linear-gradient(135deg, #374151, #1f2937);
+    color: #fff;
+    text-align: center;
+    margin-top: 40px;
 }
 
-.cart-icon:hover {
-    transform: scale(1.1);
+.contact-info p {
+    margin: 5px 0;
+    font-size: 1rem;
 }
 
-.modal {
-    animation: modalFadeIn 0.3s ease-in;
+.social-links a {
+    color: #ffd700;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
 }
 
-@keyframes modalFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.social-links a:hover {
+    color: #fff;
 }
 
-
+/* Анімації */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -317,34 +339,18 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-
-@media (max-width: 1024px) {
-    main {
-        padding: 20px;
-    }
-    .filters {
-        width: 30%;
-        margin-right: 20px;
-    }
-    .products {
-        width: 70%;
-    }
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-@media (max-width: 768px) {
-    main {
-        flex-direction: column;
-        padding: 15px;
-    }
-    .filters, .products {
-        width: 100%;
-        margin-right: 0;
-    }
-    .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
+/* Адаптивність */
 @media (max-width: 1024px) {
     main {
         padding: 20px;
