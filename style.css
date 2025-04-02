@@ -1,0 +1,255 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; 
+    line-height: 1.6;
+    background-color: #f8f9fa; 
+    color: #333;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #ced1d5, #4b5563); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo img {
+    width: 50 px; 
+    animation: fadeIn 1s ease-in;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    display: block;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+}
+
+.menu li {
+    margin-right: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffd700; 
+}
+
+
+main {
+    display: flex;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.filters {
+    width: 25%;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-right: 40px;
+}
+
+.filters h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #4b5563;
+}
+
+.filter-category, .filter-price {
+    margin-bottom: 25px;
+}
+
+select, input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #6b7280;
+}
+
+#apply-filters {
+    padding: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53); 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#apply-filters:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.products {
+    width: 75%;
+    padding: 20px;
+}
+
+.products h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #4b556366;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: cardFadeIn 0.5s ease-in;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover; 
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    margin: 10px 0;
+    color: #374151;
+}
+
+.product-card p {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.price {
+    color: #ff6b6b;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.add-to-cart {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #4682b4, #60a5fa);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-to-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(70, 130, 180, 0.4);
+}
+
+
+footer {
+    padding: 40px;
+    background: linear-gradient(135deg, #374151, #1f2937);
+    color: #fff;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.social-links a {
+    color: #ffd700;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #fff;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+@media (max-width: 1024px) {
+    main {
+        padding: 20px;
+    }
+    .filters {
+        width: 30%;
+        margin-right: 20px;
+    }
+    .products {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .filters, .products {
+        width: 100%;
+        margin-right: 0;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}

@@ -1,0 +1,76 @@
+[
+    {
+        "id": 1,
+        "name": "Miss Dior",
+        "price": 2389,
+        "category": "women",
+        "description": "Dior Miss Dior Parfum — амбровий квітковий аромат для жінок.Юності притаманні зухвалість і виклик, а елегантність зазвичай властива пізнішому віку.",
+        "image": "assets/dior-miss-dior.webp"
+    },
+    {
+        "id": 2,
+        "name": "Mon Guerlain",
+        "price": 2179,
+        "category": "women",
+        "description": "Ніжність, жіночність та чарівність - це все криється у вишуканій композиції Mon Guerlain. Героїня аромату - одночасно м'яка та сильна, вона чуттєва і знає собі ціну.",
+        "image": "assets/guerlain-mon-guerlain.webp"
+    },
+    {
+        "id": 3,
+        "name": "Crystal Noir",
+        "price": 3148,
+        "category": "women",
+        "description": "Versace Crystal Noir — чарівна східно-квіткова композиція. Теплий пряний аромат зітканий із найнезвичайніших акордів: білоквіткові, свіжі, кокосові, лактонні.",
+        "image": "assets/versace-crystal-noir.webp"
+        
+    },
+    {
+        "id": 4,
+        "name": "Pour Homme Blue Label",
+        "price": 2779,
+        "category": "men",
+        "description": "Невимушена й елегантна туалетна вода для чоловіка, який цінує відчуття свободи. Свіжий, сміливий, пряно-деревний аромат.",
+        "image": "assets/givenchy-pour-homme-blue-label.webp"
+    },
+    {
+        "id": 5,
+        "name": "Ombre Leather",
+        "price": 6798,
+        "category": "men",
+        "description": "Ombre Leather поєднує в собі квіткові та шкіряні ноти, прянощі, нагадуючи про тихе повітря, відкриті простори та багатошарові ландшафти американського південного заходу.",
+        "image": "assets/tom-ford-ombre-leather.webp"
+    },
+    {
+        "id": 6,
+        "name": "Toy Boy",
+        "price": 2909,
+        "category": "men",
+        "description": "Moschino Toy Boy — один із тих чоловічих ароматів, які можуть легко закрутити голову. Яскравий бленд квіткових, трояндових, мускусних, деревних і свіжих пряних акордів у нестандартному чорному флаконі. ",
+        "image": "assets/moschino-toy-boy.webp"
+    },
+    {
+        "id": 7,
+        "name": "1 Million Parfum",
+        "price": 3482,
+        "category": "unisex",
+        "description": "Класична елегантність, французький шик та яскрава розкіш втілилися в  Paco Rabanne 1 Million.",
+        "image": "assets/rabanne-1-million-parfum.webp"
+    },
+    {
+        "id": 8,
+        "name": "Voce Viva",
+        "price": 3259,
+        "category": "unisex",
+        "description": "Valentino Voce Viva Eau De Parfum — квітковий деревний мускусний аромат, створений у 2020 році відомими Амандин Клерк-Марі та Онорін Блан (Amandine Clerc-Marie, Honorine Blanc).",
+        "image": "assets/valentino-voce-viva.webp"
+    },
+    {
+        "id": 9,
+        "name": "Si Intense",
+        "price": 2867,
+        "category": "unisex",
+        "description": "Giorgio Armani Si Intense Eau de Parfum refillable — шипровий квітковий аромат для жінок, випущений у 2023 році. Парфумерка — Жюлі Массе (Julie Massé). Оновлена версія культового Si, який давно та міцно посів своє місце на парфумерному Олімпі.",
+        "image": "assets/armani-si-intense.webp"
+    }
+
+]
