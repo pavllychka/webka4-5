@@ -32,6 +32,15 @@ function displayProducts(products) {
         `;
         productGrid.appendChild(card);
     });
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const productId = parseInt(e.target.dataset.id);
+            const product = products.find(p => p.id === productId);
+            cart.push(product);
+            saveCart();
+        });
+    });
 }
 
 
