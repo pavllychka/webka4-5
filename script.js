@@ -44,6 +44,29 @@ function displayProducts(products) {
 }
 
 
+
+function showModal(product) {
+    const modal = document.getElementById('product-modal');
+    document.getElementById('modal-image').src = product.image;
+    document.getElementById('modal-name').textContent = product.name;
+    document.getElementById('modal-description').textContent = product.description;
+    document.getElementById('modal-price').textContent = `${product.price} грн`;
+    document.querySelector('.add-to-cart-modal').dataset.id = product.id;
+    modal.style.display = 'flex';
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    document.querySelector('.add-to-cart-modal').addEventListener('click', () => {
+        cart.push(product);
+        saveCart();
+        modal.style.display = 'none';
+    });
+}
+
+
+
 function filterProducts(products) {
     const category = document.getElementById('category').value;
     const minPrice = parseInt(document.getElementById('min-price').value) || 0;
