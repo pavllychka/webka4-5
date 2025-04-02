@@ -1,4 +1,3 @@
-
 async function loadProducts() {
     try {
         const response = await fetch('products.json');
@@ -9,7 +8,6 @@ async function loadProducts() {
         return [];
     }
 }
-
 
 function displayProducts(products) {
     const productGrid = document.getElementById('product-grid');
@@ -43,8 +41,6 @@ function displayProducts(products) {
     });
 }
 
-
-
 function showModal(product) {
     const modal = document.getElementById('product-modal');
     document.getElementById('modal-image').src = product.image;
@@ -65,8 +61,6 @@ function showModal(product) {
     });
 }
 
-
-
 function filterProducts(products) {
     const category = document.getElementById('category').value;
     const minPrice = parseInt(document.getElementById('min-price').value) || 0;
@@ -78,20 +72,6 @@ function filterProducts(products) {
         return matchesCategory && matchesPrice;
     });
 }
-
-
-async function init() {
-    const products = await loadProducts();
-    displayProducts(products);
-
-    
-    document.getElementById('apply-filters').addEventListener('click', () => {
-        const filteredProducts = filterProducts(products);
-        displayProducts(filteredProducts);
-    });
-}
-
-init();
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -105,15 +85,26 @@ function saveCart() {
     updateCartCount();
 }
 
+
 async function init() {
     const products = await loadProducts();
     displayProducts(products);
-    updateCartCount(); 
+    updateCartCount();
 
-    document.getElementById('apply-filters').addEventListener('click', () => {
+    const applyFiltersBtn = document.getElementById('apply-filters');
+    const categorySelect = document.getElementById('category');
+    const minPriceInput = document.getElementById('min-price');
+    const maxPriceInput = document.getElementById('max-price');
+
+    function applyFilters() {
         const filteredProducts = filterProducts(products);
         displayProducts(filteredProducts);
-    });
+    }
+
+    applyFiltersBtn.addEventListener('click', applyFilters);
+    categorySelect.addEventListener('change', applyFilters);
+    minPriceInput.addEventListener('input', applyFilters);
+    maxPriceInput.addEventListener('input', applyFilters);
 }
 
 init();
